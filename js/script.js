@@ -16,4 +16,17 @@ function createTweet(input) {
     if (!quoteAuthor.length) {
         quoteAuthor = "Unknown author";
     }
+    let tweetText = `Quote of the day ${quoteText} Author: ${quoteAuthor}`;
+    if (tweetText.lenght > 140) {
+        getQuote();
+    } else {
+        let tweet = tweetLink + encodeURIComponent(tweetText);
+        document.getElementById('quote').innerText = quoteText;
+        document.getElementById('author').innerText = `Author ${quoteAuthor}`;
+        document.querySelector('.tweet').setAttribute('href', tweet);
+    }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    getQuote();
+    document.querySelector('quote-btn').addEventListener('click', () => getQuote());
+});
