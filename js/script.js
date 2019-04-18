@@ -3,8 +3,10 @@ const quoteUrl = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&
 
 function getQuote() {
     fetch(quoteUrl, { cache: "no-store" })
-        .then((resp) => resp.json())
-        .then(createTweet(resp));
+        .then(function (resp) {
+            return resp.json();
+        })
+        .then(createTweet);
     debugger;
 }
 
